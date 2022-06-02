@@ -2,11 +2,15 @@
 .content{
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
 }
 app-form {
   width: 50%;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 app-list {
   width:50%;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
