@@ -2,6 +2,6 @@
 <div class="content">
   <app-form></app-form>
   <hr style="width:50%">
-  <app-list></app-list>
+  <app-list [class.foo]="true" *ngIf="(listItems$ | async) !== null" [listItems]="listItems$ | async" (removeEvent)="removeItem($event)"></app-list>
 </div>
 

@@ -14,6 +14,10 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from "@angular/material/list";
+import {listItemReducer} from "./state/list.reducer";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,7 +28,7 @@ import {MatListModule} from "@angular/material/list";
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({listFeature: listItemReducer}, {}),
     NoopAnimationsModule,
     MatToolbarModule,
     MatIconModule,
@@ -32,7 +36,9 @@ import {MatListModule} from "@angular/material/list";
     MatBadgeModule,
     MatFormFieldModule,
     MatInputModule,
-    MatListModule
+    MatListModule,
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

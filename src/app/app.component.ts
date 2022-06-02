@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Observable} from "rxjs";
+import {Store} from "@ngrx/store";
+import {listItemSelector} from "./state/list.selectors";
+import {ListItem} from "./models/list-item.model";
+import * as ListItemActions from "./state/list.actions";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +11,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngrx-test';
+
+  listItems$: Observable<ListItem[]> = this.store.select(listItemSelector);
+
+  constructor(private store: Store){}
+
+  removeItem($event: number) {
+    this.store.dispatch(ListItemActions.removeListItem({index: $event}));
+  }
 }

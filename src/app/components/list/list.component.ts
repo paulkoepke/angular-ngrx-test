@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {ListItem} from "../../models/list-item.model";
 
 @Component({
   selector: 'app-list',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  listItems: ListItem[] | undefined | null;
+
+  @Output()
+  removeEvent: EventEmitter<number> = new EventEmitter<number>();
+
+  constructor(private store: Store) { }
+
 
   ngOnInit(): void {
+
   }
 
+  removeItem(i: number) {
+    this.removeEvent.emit(i);
+  }
 }

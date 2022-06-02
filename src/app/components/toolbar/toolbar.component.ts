@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Store} from "@ngrx/store";
+import {listItemLengthSelector} from "../../state/list.selectors";
 
 @Component({
   selector: 'app-toolbar',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store) { }
+
+  listItemLength$ = this.store.select(listItemLengthSelector);
 
   ngOnInit(): void {
   }

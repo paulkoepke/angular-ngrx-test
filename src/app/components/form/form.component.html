@@ -2,12 +2,13 @@
 <form class="example-form">
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Title</mat-label>
-    <input matInput placeholder="Here goes the title" >
+    <input matInput [(ngModel)]="title" name="title" placeholder="Here goes the title" >
   </mat-form-field>
 
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Some Text</mat-label>
-    <textarea matInput placeholder="This should contain some text"></textarea>
+    <textarea matInput [(ngModel)]="text" name="text" placeholder="This should contain some text"></textarea>
   </mat-form-field>
-  <button mat-flat-button color="primary">Add</button>
+
 </form>
+<button mat-flat-button color="primary" (click)="handleButtonClick()" >Add</button>
